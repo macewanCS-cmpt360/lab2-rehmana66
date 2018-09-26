@@ -16,4 +16,7 @@ q3: q3.c
 q7: q7.c
 	$(CC) -o q7 q7.c
 
+shell: shell.c
+	$(CC) -o shell shell.c
+
 clean: rm -f *.o
