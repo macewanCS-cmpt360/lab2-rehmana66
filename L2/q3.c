@@ -7,17 +7,7 @@
 /*
  * Not a working solution but an attempt using signals
  */
-
-void writeup(int sig)
-{
-	printf("Child: hello\n");
-}
-
-void writep(int sig)
-{
-	printf("Parent: goodbye\n");
-}
-
+		
 int main(int argc, char *argv[])
 {
 	int rc = fork();
@@ -26,12 +16,10 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "fork failed\n");
 		exit(1);
 	} else if (rc == 0) { // child (new process)
-		signal(SIGCONT, writeup);
-		//printf("sds\n");
-		//exit(0);
+		printf("Child: hello\n");
 	} else { // parent goes down this path
-		signal(SIGCHLD, writeup);
-		//printf("sdff\n");
+		sleep(1);
+		printf("Parent: goodbye\n");
 	}
 	return 0;
 }
